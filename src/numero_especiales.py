@@ -1,17 +1,25 @@
-def numeros_especiales(inicio: int, final: int, que_calculamos: str):
+def numeros_especiales(inicio: int, final: int, que_calculamos: str) -> int:
+    suma = 0
     lista = []
     if que_calculamos == "pares":
         for numero in range(inicio, final):
             if numero % 3 == 0:
                 continue
-            if numero
-            resultado += f"{n} "
+            if numero % 2 == 0:
+                lista.append(numero)
+            else:
+                continue
     elif que_calculamos == "impares":
         for numero in range(inicio, final):
             if numero % 3 == 0:
                 continue
-            resultado += f"{n} "
-    return resultado
+            if numero % 2 == 1:
+                lista.append(numero)
+            else:
+                continue
+    for numero in lista:
+        suma += numero
+    return suma
 
 
 if __name__ == '__main__':
@@ -35,9 +43,10 @@ if __name__ == '__main__':
             error = 2
             raise ValueError
         # Proceso
-        resultado_especiales = numeros_especiales(inicio, final, que_calculamos)
+        suma_especiales = numeros_especiales(inicio, final, que_calculamos)
         # Salida
-        print(resultado_especiales)
+        print(f"La suma de los numeros {que_calculamos} que no son múltiplos de 3 en el rango "
+        f"de {inicio} a {final} es: {suma_especiales}")
     except ValueError:
         # Salida
         if error == 1:
